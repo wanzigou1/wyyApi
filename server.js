@@ -8,7 +8,7 @@ const cache = require('./util/apicache').middleware
 const { cookieToJson } = require('./util/index')
 const fileUpload = require('express-fileupload')
 const decode = require('safe-decode-uri-component')
-
+const cors = require('cors')
 /**
  * The version check result.
  * @readonly
@@ -176,6 +176,7 @@ async function consturctServer(moduleDefs) {
   app.use(express.urlencoded({ extended: false }))
 
   app.use(fileUpload())
+  app.use(cors())
 
   /**
    * Serving static files
